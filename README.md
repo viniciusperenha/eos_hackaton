@@ -1,7 +1,7 @@
 # Desafio EOS Rio Hackathon 2018
 
 ## Tema
-Aplicação decentralizada com foco em impacto social e/ou ambiental a ser implementada na blockchain EOS.
+Aplicação descentralizada com foco em impacto social e/ou ambiental a ser implementada na Blockchain EOS.
 Os projetos podem ser distribuidos tanto na Mainnet como em uma testnet privada a ser configurada pela equipe.
 
 ## Critérios de Avaliação
@@ -20,8 +20,8 @@ Os projetos podem ser distribuidos tanto na Mainnet como em uma testnet privada 
 
 ## Instruções
 
-1. Mantenha o código fonte dos contratos de seu projeto no repositório privado da sua equipe, a nossa equipe terá acesso ao mesmo e estaremos avaliando durante todo o período da Hackathon até 20/09 (deadline).
+1. Mantenha o código fonte dos contratos (smart contracts) e outros arquivos auxiliares para seu projeto no repositório privado da sua equipe, a nossa equipe terá acesso ao mesmo e estaremos avaliando durante todo o período da Hackathon até 20/09 (deadline).
 
-2. Criar um arquivo README.md na raiz do rpositório com a descrição do seu projeto.
+2. Modificar ester arquivo README.md na raiz do repositório para incluir a descrição do seu projeto.
 
 3. Dúvidas e acesso as calls para AMA (Ask Me Anything) com os mentores serão feitas através do grupo https://t.me/eosriohackathon
