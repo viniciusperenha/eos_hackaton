@@ -1,0 +1,38 @@
+<!--
+  Generated template for the ExchangePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Exchange</ion-title>
+      </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label stacked>Wallet</ion-label>
+        <ion-input type="text" placeholder="wallet"></ion-input>
+      </ion-item>          
+    
+      <ion-item>
+          <ion-label>Quantidade {{ quantidade }}</ion-label>
+          <ion-range min="0" max="1000" [(ngModel)]="quantidade" color="secondary">
+            <ion-label range-left>0</ion-label>
+            <ion-label range-right>1000</ion-label>
+          </ion-range>
+        </ion-item>
+    
+      <ion-item>
+        <button ion-button round full>Destruir tokens</button>
+      </ion-item>
+
+</ion-content>

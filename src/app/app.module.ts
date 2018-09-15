@@ -4,26 +4,38 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TransferenciaPage } from '../pages/transferencia/transferencia';
+import { WalletsPage } from '../pages/wallets/wallets';
+import { ChartsModule } from 'ng2-charts';
+import { TokenPage } from '../pages/token/token';
+import { ExchangePage } from '../pages/exchange/exchange';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
+    HomePage,    
+    TransferenciaPage,
+    WalletsPage,
+    TokenPage,
+    ExchangePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
+    HomePage,    
+    TransferenciaPage,
+    WalletsPage,
+    TokenPage,
+    ExchangePage
   ],
   providers: [
     StatusBar,

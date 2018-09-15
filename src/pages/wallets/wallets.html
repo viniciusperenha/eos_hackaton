@@ -1,0 +1,32 @@
+<!--
+  Generated template for the WalletsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Wallets</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label stacked>Nome da wallet</ion-label>
+    <ion-input placeholder="Nome da wallet"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Wallet de projeto</ion-label>
+    <ion-checkbox [(ngModel)]="projeto"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button round full>Criar wallet</button>
+  </ion-item>
+
+</ion-content>
