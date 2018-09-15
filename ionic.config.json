@@ -1,0 +1,7 @@
+{
+  "name": "polischain",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
