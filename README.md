@@ -1,4 +1,4 @@
-# Projeto HomeGrow Net
+# Projeto Polischain
 
 ## Do que se trata?
 
