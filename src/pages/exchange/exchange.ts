@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ComunicacaoServiceProvider } from '../../providers/comunicacao-service/comunicacao-service';
+import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 
 /**
  * Generated class for the ExchangePage page.
@@ -31,6 +32,7 @@ export class ExchangePage {
  
 
   consultaSaldo(){
+    /*
     this.comunicacaoServiceProvider.getAccountObj(this.conta).subscribe(res => this.contaObj = res.json());
     this.comunicacaoServiceProvider.getBalance(this.conta, 'EOS').subscribe(res => {
       let resultado = res.json();
@@ -43,6 +45,8 @@ export class ExchangePage {
       let valorsplit = resultado[0].split(' ');
       this.saldojungle = valorsplit[0];
     });
+    */
+   
   }
 
 }

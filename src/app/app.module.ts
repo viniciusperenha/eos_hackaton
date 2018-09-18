@@ -15,6 +15,7 @@ import { TokenPage } from '../pages/token/token';
 import { ExchangePage } from '../pages/exchange/exchange';
 import { ComunicacaoServiceProvider } from '../providers/comunicacao-service/comunicacao-service';
 import { HttpModule } from '@angular/http';
+import { EosServiceProvider } from '../providers/eos-service/eos-service';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ComunicacaoServiceProvider
+    ComunicacaoServiceProvider,
+    EosServiceProvider
   ]
 })
 export class AppModule {}

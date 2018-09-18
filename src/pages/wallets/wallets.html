@@ -17,8 +17,12 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label stacked>Nome da wallet</ion-label>
-    <ion-input placeholder="Nome da wallet"></ion-input>
+    <ion-label stacked>Nome da wallet (a-z,1-5 are allowed only. Length 12) </ion-label>
+    <ion-input placeholder="Nome da wallet" [(ngModel)]="nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Senha da wallet</ion-label>
+    <ion-input placeholder="Senha da wallet" [(ngModel)]="senha"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Wallet de projeto</ion-label>
@@ -26,7 +30,11 @@
   </ion-item>
 
   <ion-item>
-    <button ion-button round full>Criar wallet</button>
+    <button ion-button round full (click)="getKeyPair()">Gerar chaves wallet</button>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button round full (click)="createAccount()">Criar wallet</button>
   </ion-item>
 
 </ion-content>
