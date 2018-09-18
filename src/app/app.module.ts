@@ -13,6 +13,9 @@ import { WalletsPage } from '../pages/wallets/wallets';
 import { ChartsModule } from 'ng2-charts';
 import { TokenPage } from '../pages/token/token';
 import { ExchangePage } from '../pages/exchange/exchange';
+import { ComunicacaoServiceProvider } from '../providers/comunicacao-service/comunicacao-service';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { ExchangePage } from '../pages/exchange/exchange';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,7 +44,8 @@ import { ExchangePage } from '../pages/exchange/exchange';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ComunicacaoServiceProvider
   ]
 })
 export class AppModule {}

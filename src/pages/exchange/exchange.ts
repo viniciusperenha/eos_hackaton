@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ComunicacaoServiceProvider } from '../../providers/comunicacao-service/comunicacao-service';
 
 /**
  * Generated class for the ExchangePage page.
@@ -15,13 +16,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ExchangePage {
 
-  quantidade = 0;
+  quantidadeeos = 0;
+  quantidadejungle = 0;
+  conta = "lioninjungle";
+  saldoeos = "";
+  saldojungle = "";
+  contaObj = {};
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public comunicacaoServiceProvider:ComunicacaoServiceProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ExchangePage');
+ 
+
+  consultaSaldo(){
+    this.comunicacaoServiceProvider.getAccountObj(this.conta).subscribe(res => this.contaObj = res.json());
+    this.comunicacaoServiceProvider.getBalance(this.conta, 'EOS').subscribe(res => {
+      let resultado = res.json();
+      let valorsplit = resultado[0].split(' ');
+      this.saldoeos = valorsplit[0];
+      
+    });
+    this.comunicacaoServiceProvider.getBalance(this.conta, 'JUNGLE').subscribe(res => {
+      let resultado = res.json();
+      let valorsplit = resultado[0].split(' ');
+      this.saldojungle = valorsplit[0];
+    });
   }
 
 }
