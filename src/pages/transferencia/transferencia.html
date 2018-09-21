@@ -17,25 +17,47 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label stacked>Wallet Origem</ion-label>
-    <ion-input type="text" placeholder="wallet"></ion-input>
+    <ion-label stacked>Account Origem</ion-label>
+    <ion-input type="text" [(ngModel)]="conta" placeholder="wallet"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Nome token</ion-label>
+    <ion-input type="text" [(ngModel)]="token" placeholder="Nome token"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button round full (click)="getBalance()">Consultar saldo</button>
+  </ion-item>
+
+  <ion-item *ngIf="contaObj.account_name">
+    <ion-card-header>
+      {{ contaObj.account_name }}
+    </ion-card-header>
+
+    <ion-card-content *ngIf="quantidadetoken">
+      {{ quantidadetoken[0]}}
+    </ion-card-content>
+  </ion-item>
+  <ion-item *ngIf="quantidadetoken!=''">
+    <ion-label>Quantidade {{ token }}</ion-label>
+    <ion-range min="0" max="{{ quantidadetoken[0] | saldoTokenPipe }}" [(ngModel)]="quantidade" color="secondary">
+      <ion-label range-left>0</ion-label>
+      <ion-label range-right>{{quantidadetoken[0] | saldoTokenPipe}}</ion-label>
+    </ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Quantidade</ion-label>
+    <ion-input type="text" [(ngModel)]="quantidade" placeholder="Quantidade token"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label stacked>Wallet Destino</ion-label>
-    <ion-input type="text" placeholder="wallet"></ion-input>
+    <ion-label stacked>Account Destino</ion-label>
+    <ion-input type="text" [(ngModel)]="contaDestino" placeholder="wallet"></ion-input>
   </ion-item>
 
-  <ion-item>
-      <ion-label>Quantidade {{ quantidade }}</ion-label>
-      <ion-range min="0" max="1000" [(ngModel)]="quantidade" color="secondary">
-        <ion-label range-left>0</ion-label>
-        <ion-label range-right>1000</ion-label>
-      </ion-range>
-    </ion-item>
+
 
   <ion-item>
-    <button ion-button round full>Transferir tokens</button>
+    <button ion-button round full (click)="confirmaTransferencia()">Transferir tokens</button>
   </ion-item>
 
 </ion-content>

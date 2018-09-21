@@ -19,41 +19,36 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label stacked>Wallet</ion-label>
-    <ion-input type="text" placeholder="wallet" [(ngModel)]="conta"></ion-input>
+    <ion-label stacked>Conta: {{ conta }}</ion-label>
   </ion-item>
   <ion-item>
-    <button ion-button round full (click)="consultaSaldo()">Consultar saldo</button>
+    <ion-label stacked>Nome token</ion-label>
+    <ion-input type="text" [(ngModel)]="token" placeholder="Nome token"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button round full (click)="getBalance()">Consultar saldo</button>
   </ion-item>  
   
-  <ion-item *ngIf="contaObj.account_name">
-    <ion-card-header>
-      {{ contaObj.account_name }}
-    </ion-card-header>
-
-    <ion-card-content>
-      {{ saldoeos }} EOS<br />
-      {{ saldojungle }} JUNGLE
+  <ion-item *ngIf="quantidadetoken[0]!=''">    
+    <ion-card-content >
+      {{ quantidadetoken[0]}}        
     </ion-card-content>
   </ion-item>
-  <ion-item *ngIf="contaObj.account_name">
-    <ion-label>Quantidade EOS - {{ quantidadeeos }}</ion-label>
-    <ion-range min="0" max="{{saldoeos}}" [(ngModel)]="quantidadeeos" color="secondary">
+
+  <ion-item *ngIf="quantidadetoken!=''">
+    <ion-label>Quantidade {{ token }}</ion-label>
+    <ion-range min="0" max="{{ quantidadetoken[0] | saldoTokenPipe }}" [(ngModel)]="quantidade" color="secondary">
       <ion-label range-left>0</ion-label>
-      <ion-label range-right>{{saldoeos}}</ion-label>
+      <ion-label range-right>{{quantidadetoken[0] | saldoTokenPipe}}</ion-label>
     </ion-range>
   </ion-item>
-
-  <ion-item *ngIf="contaObj.account_name">
-    <ion-label>Quantidade JUNGLE - {{ quantidadejungle }}</ion-label>
-    <ion-range min="0" max="{{saldojungle}}" [(ngModel)]="quantidadejungle" color="secondary">
-      <ion-label range-left>0</ion-label>
-      <ion-label range-right>{{saldojungle}}</ion-label>
-    </ion-range>
+  <ion-item>
+    <ion-label stacked>Quantidade</ion-label>
+    <ion-input type="text" [(ngModel)]="quantidade" placeholder="Quantidade token"></ion-input>
   </ion-item>
 
-  <ion-item *ngIf="contaObj.account_name">
-    <button ion-button round full>Destruir tokens</button>
+  <ion-item >
+    <button ion-button round full (click)="burnTokens()">Destruir tokens</button>
   </ion-item>
 
 </ion-content>

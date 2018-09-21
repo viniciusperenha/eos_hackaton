@@ -16,6 +16,8 @@ import { ExchangePage } from '../pages/exchange/exchange';
 import { ComunicacaoServiceProvider } from '../providers/comunicacao-service/comunicacao-service';
 import { HttpModule } from '@angular/http';
 import { EosServiceProvider } from '../providers/eos-service/eos-service';
+import { ContaPage } from '../pages/conta/conta';
+import { SaldoTokenPipe } from '../pipes/saldo-token/saldo-token';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { EosServiceProvider } from '../providers/eos-service/eos-service';
     TransferenciaPage,
     WalletsPage,
     TokenPage,
-    ExchangePage
+    ExchangePage,
+    ContaPage,
+    SaldoTokenPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,8 @@ import { EosServiceProvider } from '../providers/eos-service/eos-service';
     TransferenciaPage,
     WalletsPage,
     TokenPage,
-    ExchangePage
+    ExchangePage,
+    ContaPage
   ],
   providers: [
     StatusBar,

@@ -8,6 +8,7 @@ import { TransferenciaPage } from '../pages/transferencia/transferencia';
 import { WalletsPage } from '../pages/wallets/wallets';
 import { TokenPage } from '../pages/token/token';
 import { ExchangePage } from '../pages/exchange/exchange';
+import { ContaPage } from '../pages/conta/conta';
 
 
 @Component({
@@ -26,9 +27,10 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Wallets', component: WalletsPage },
-      { title: 'Tokens', component: TokenPage },      
+      { title: 'Accounts', component: ContaPage },
       { title: 'Transferência', component: TransferenciaPage },
+      //{ title: 'Wallets', component: WalletsPage },
+      { title: 'Tokens', component: TokenPage },            
       { title: 'Exchange', component: ExchangePage }
     ];
 

@@ -14,6 +14,7 @@ export class ComunicacaoServiceProvider {
   hosthistory = this.host+"/v1/history";
   hostproducer = this.host+"/v1/producer";  
   hostchain = this.host+"/v1/chain";
+  smartContract = "eosio.token";
 
 
   constructor(public http: Http) {
@@ -63,7 +64,7 @@ export class ComunicacaoServiceProvider {
   }
 
   getBalance(idconta, moeda){
-    return this.http.post(`${this.hostchain }/get_currency_balance`, JSON.stringify({ 'code': 'eosio.token', 'account': idconta, 'symbol':moeda}));
+    return this.http.post(`${this.hostchain }/get_currency_balance`, JSON.stringify({ 'code': this.smartContract, 'account': idconta, 'symbol':moeda}));
   }
   n
 

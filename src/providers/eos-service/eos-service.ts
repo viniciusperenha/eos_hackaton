@@ -12,19 +12,21 @@ import { EosTestnetConnectionConfig } from '../chains/eos-testnet-connection-con
 export class EosServiceProvider {
   ecc: any;
   eos: any;
-  admKey = "5Jdw1B5W9mQaTKxnL4R33WYTkurVgpBwmqcXwkpw5HUmBr8q9k1";
-  admAccount = "lionteucu132";
+  //admKey = "5Jdw1B5W9mQaTKxnL4R33WYTkurVgpBwmqcXwkpw5HUmBr8q9k1";
+  admKey = "5JgNNafJpcimV8iseZRG9tQjSg2MBw7TSW8RwxcQ6Wx8XW6sSCV";
+  admAccount = "pietropietro";
+  eosconfig: EosTestnetConnectionConfig;
 
 
   constructor() {
-    let eosconfig = new EosTestnetConnectionConfig();
-    eosconfig.setKeyProvider(this.admKey);
-    this.eos = Eos(eosconfig);
-    
+    this.eosconfig = new EosTestnetConnectionConfig();
+    this.eosconfig.setKeyProvider(this.admKey);
+    this.eos = Eos(this.eosconfig);
+
     this.ecc = Eos.modules['ecc'];
   }
 
-  generateKeyPair(): Promise<any> {
+  generateKeyPair(nome): Promise<any> {
     return new Promise((resolve) => {
       this.ecc.randomKey().then(privateKey => {
         let keys = {
@@ -32,26 +34,103 @@ export class EosServiceProvider {
           publick: this.ecc.privateToPublic(privateKey)
         };
         resolve(keys);
+        this.createAccount(nome, keys);
       });
     });
   }
 
-  createAccount(nome, senha, keys){
-    
-    
+  createAccount(nome, keys) {
     this.eos.transaction(tr => {
       tr.newaccount({
         creator: this.admAccount,
         name: nome,
-        owner: keys.__zone_symbol__value.privatek,
-        active: keys.__zone_symbol__value.publick
-      })
-    
+        owner: keys.publick,
+        active: keys.publick
+      });
+
       tr.buyrambytes({
         payer: this.admAccount,
         receiver: nome,
         bytes: 8192
-      })          
-    })
+      });
+      tr.delegatebw({
+        from: this.admAccount,
+        receiver: nome,
+        stake_net_quantity: '10.0000 EOS',
+        stake_cpu_quantity: '10.0000 EOS',
+        transfer: 0
+      })
+
+    }).then((resp) => {
+      console.log("EOS resp ", resp);
+    });
   }
+
+  transferAccounts(origem, destino, quantidade) {
+    //return this.eos.transfer(origem, destino, quantidade, '');
+    return this.eos.transaction(
+      {
+        // ...headers,
+        // context_free_actions: [],
+        actions: [
+          {
+            account: 'pietropietro',
+            name: 'transfer',
+            authorization: [{
+              actor: origem,
+              permission: 'active'
+            }],
+            data: {
+              from: origem,
+              to: destino,
+              quantity: quantidade,
+              memo: ''
+            }
+          }
+        ]
+      }
+      // config -- example: {broadcast: false, sign: true}
+    )
+    
+    
+  }
+
+  getBalance(conta, tokenname){
+    return this.eos.getCurrencyBalance(this.eosconfig.mainContractName, conta, tokenname);
+  }
+
+  emitirToken(conta, quantidade, tokenname){
+    this.eos.transaction(this.admAccount, myaccount => {
+     
+      // Issue some of the max supply for circulation into an arbitrary account
+      myaccount.issue(this.admAccount, quantidade+'.000 '+tokenname, 'issue')
+    });
+     
+    const balance = this.getBalance(conta, tokenname);
+    return balance;
+  }
+
+  burnToken(quantidade){
+    this.eos.transaction(
+
+      {        
+        actions: [
+          {
+            account: 'pietropietro',
+            name: 'burn',
+            authorization: [{
+              actor: this.admAccount,
+              permission: 'active'
+            }],
+            data: {              
+              quantity: quantidade,
+              memo: ''
+            }
+          }
+        ]
+      }
+
+    );
+  }
+
 }

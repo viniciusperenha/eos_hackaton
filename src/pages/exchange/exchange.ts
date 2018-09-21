@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ComunicacaoServiceProvider } from '../../providers/comunicacao-service/comunicacao-service';
 import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 
 /**
@@ -17,36 +16,27 @@ import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 })
 export class ExchangePage {
 
-  quantidadeeos = 0;
-  quantidadejungle = 0;
-  conta = "lioninjungle";
-  saldoeos = "";
-  saldojungle = "";
-  contaObj = {};
+  conta = "pietropietro";
+  quantidade = 0;
+  quantidadetoken = [];
+  token = "";
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public comunicacaoServiceProvider:ComunicacaoServiceProvider) {
+    public eosServiceProvider:EosServiceProvider) {
   }
 
- 
-
-  consultaSaldo(){
-    /*
-    this.comunicacaoServiceProvider.getAccountObj(this.conta).subscribe(res => this.contaObj = res.json());
-    this.comunicacaoServiceProvider.getBalance(this.conta, 'EOS').subscribe(res => {
-      let resultado = res.json();
-      let valorsplit = resultado[0].split(' ');
-      this.saldoeos = valorsplit[0];
-      
-    });
-    this.comunicacaoServiceProvider.getBalance(this.conta, 'JUNGLE').subscribe(res => {
-      let resultado = res.json();
-      let valorsplit = resultado[0].split(' ');
-      this.saldojungle = valorsplit[0];
-    });
-    */
+  getBalance(){    
+    this.eosServiceProvider.getBalance(this.conta, this.token).then(r=> this.quantidadetoken = r);
    
+  }
+
+  burnTokens(){
+    let arraybalance = this.quantidadetoken[0].split(' ');
+    let fracao = arraybalance[0].split('.');
+    let quantidadeformatada = this.quantidade+'.'+fracao[1]+' '+this.token;
+    
+    this.eosServiceProvider.burnToken(quantidadeformatada);
   }
 
 }

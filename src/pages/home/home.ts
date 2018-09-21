@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 
 @Component({
   selector: 'page-home',
@@ -7,18 +8,19 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  balance = 0;
+
 
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:string[] = ['projeto 1', 'projeto 2', 'projeto 3'];
+  public barChartLabels:string[] = ['pietropietro'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
   
-  public barChartData:any[] = [
-    {data: [100, 100, 80], label: 'Emitidos'},
-    {data: [28, 48, 40], label: 'Saldo'}
+  public barChartData:any[] = [    
+    {data: [this.balance, 1000000, 0], label: 'VIN'}
   ];
   
   // events
@@ -50,9 +52,16 @@ export class HomePage {
      * assign it;
      */
   }
+  
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public eosServiceProvider:EosServiceProvider) {
+    this.eosServiceProvider.getBalance('pietropietro', 'VIN').then(r=> {
+      let ar = r[0].split('.');
+      this.balance = ar[0];
+      console.log(this.balance);
+      
+      this.barChartData = [{data: [this.balance, 100000, 0], label: 'VIN'}];
+    });
   }
 
 }

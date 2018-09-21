@@ -18,8 +18,8 @@ export class EosTestnetConnectionConfig {
 
     constructor() {
         this.pKeyPrefix = 'EOS';
-        this.systemTokenName = 'EOS';
-        this.mainContractName = 'eosio.token';
+        this.systemTokenName = 'VIN';
+        this.mainContractName = 'pietropietro';
         this.chainName = "Jungle Testnet";
         this.chainId = '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca'; // 32 byte (64 char) hex string
         this.httpEndpoint = 'http://jungle.cryptolions.io:38888';
@@ -29,17 +29,7 @@ export class EosTestnetConnectionConfig {
         this.sign = true;
         this.chainExplorerTxnUrl = "http://jungle.cryptolions.io/#tx:";
         this.tokensList = [
-            {symbol:'EOSDAC', contract:'eosdactokens'},
-            {symbol:'ADD', contract: 'eosadddddddd'},
-            {symbol:'EOX', contract: 'eoxeoxeoxeox'},
-            {symbol:'EDNA', contract: 'ednazztokens'},
-            {symbol:'ATD', contract: 'eosatidiumio'},
-            {symbol:'CET', contract: 'eosiochaince'},
-            {symbol:'HORUS', contract: 'horustokenio'},
-            {symbol:'KARMA', contract: 'therealkarma'},
-            {symbol:'ESB', contract: 'esbcointoken'},
-            {symbol:'IQ', contract: 'everipediaiq'},
-            {symbol:'CHL', contract: 'challengedac'}
+            {symbol:'VIN', contract:'pietropietro'}                                
           ];
     }
 

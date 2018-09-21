@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 
 /**
- * Generated class for the WalletsPage page.
+ * Generated class for the ContaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,10 +11,10 @@ import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 
 @IonicPage()
 @Component({
-  selector: 'page-wallets',
-  templateUrl: 'wallets.html',
+  selector: 'page-conta',
+  templateUrl: 'conta.html',
 })
-export class WalletsPage {
+export class ContaPage {
 
   projeto = false;
   keys: any = {};
@@ -27,9 +27,8 @@ export class WalletsPage {
 
 
   getKeyPair(){
-   this.keys = this.eosServiceProvider.generateKeyPair(this.nome);
-   
-  }
-
+    this.keys = this.eosServiceProvider.generateKeyPair(this.nome);
+    
+   }
 
 }

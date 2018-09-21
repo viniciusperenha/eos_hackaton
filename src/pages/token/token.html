@@ -15,18 +15,26 @@
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-label stacked>Account</ion-label>
+    <ion-input type="text" [(ngModel)]="conta" placeholder="Account"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label stacked>Nome Token</ion-label>
+      <ion-input type="text" [(ngModel)]="tokemname" placeholder="Nome token"></ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label stacked>Quantidade de tokens {{ quantidade }}</ion-label>
+    <ion-range min="0" max="1000000" [(ngModel)]="quantidade" color="secondary">
+      <ion-label range-left>0</ion-label>
+      <ion-label range-right>1000000</ion-label>
+    </ion-range>
+  </ion-item>
+  
 
   <ion-item>
-    <ion-label stacked>Quantidade de tokens</ion-label>
-    <ion-input type="number" placeholder="Quantidade de tokens"></ion-input>
+    <button ion-button round full (click)="emitirTokens()">Emitir tokens</button>
   </ion-item>
-  <ion-item>
-    <ion-label stacked>Wallet</ion-label>
-    <ion-input type="text" placeholder="wallet"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <button ion-button round full>Emitir tokens</button>
-  </ion-item>
+  {{ balance | json}}
 
 </ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EosServiceProvider } from '../../providers/eos-service/eos-service';
 
 /**
  * Generated class for the TokenPage page.
@@ -15,11 +16,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TokenPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  conta = "jaqueline123";
+  quantidade = 0;
+  tokemname = "VIN";
+  balance = "";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public eosServiceProvider:EosServiceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TokenPage');
+  }
+
+  emitirTokens(){
+    this.balance = this.eosServiceProvider.emitirToken(this.conta, this.quantidade, this.tokemname);
   }
 
 }

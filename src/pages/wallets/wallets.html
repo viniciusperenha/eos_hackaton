@@ -33,8 +33,9 @@
     <button ion-button round full (click)="getKeyPair()">Gerar chaves wallet</button>
   </ion-item>
 
-  <ion-item>
-    <button ion-button round full (click)="createAccount()">Criar wallet</button>
+  <ion-item *ngIf="keys.__zone_symbol__value!=undefined">    
+      Public key = {{keys.__zone_symbol__value.publick}} <br />
+      Private key = {{keys.__zone_symbol__value.privatek}}    
   </ion-item>
 
 </ion-content>

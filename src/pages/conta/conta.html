@@ -1,0 +1,33 @@
+<!--
+  Generated template for the WalletsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Accounts</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <ion-item>
+      <ion-label stacked>Nome da conta (a-z,1-5 are allowed only. Length 12) </ion-label>
+      <ion-input placeholder="Nome da wallet" [(ngModel)]="nome"></ion-input>
+    </ion-item>       
+  
+    <ion-item>
+      <button ion-button round full (click)="getKeyPair()">Criar account</button>
+    </ion-item>
+  
+    <ion-item *ngIf="keys.__zone_symbol__value!=undefined">    
+        Public key = {{keys.__zone_symbol__value.publick}} <br />
+        Private key = {{keys.__zone_symbol__value.privatek}}    
+    </ion-item>
+  
+  </ion-content>
